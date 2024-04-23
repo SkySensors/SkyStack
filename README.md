@@ -36,7 +36,9 @@ git clone https://github.com/SkySensors/SkyStack
 docker-compose up
 ```
 
-Denne kommando vil bygge de nødvendige Docker-billeder og starte de containere, der er defineret i `docker-compose.yml`-filen. Du bør nu kunne få adgang til programmet på `http://localhost` i din webbrowser.
+Denne kommando vil bygge de nødvendige Docker-billeder og starte de containere, der er defineret i `docker-compose.yml`-filen. 
+- Skyboard på `http://localhost:80`.
+- SkySensorsAPI `http://localhost:8080`
 
 ### Andre Docker Compose kommandoer
 - Det er muligt at ændre database password udfra "POSTGRES_PASSWORD"
