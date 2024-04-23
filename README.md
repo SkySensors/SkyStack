@@ -1,5 +1,5 @@
 
-# Sky Stack Configuration
+# Sky Stack Konfiguration
 
 
 
