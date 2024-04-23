@@ -6,7 +6,7 @@
 
 ## Kør lokalt
 
-This stack contains the following applications
+Denne stack kører følgende applikationer
 - Skyboard (frontend)
 - SkySensorsAPI (API)
 - PostgreSQL (database)
