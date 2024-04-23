@@ -1,0 +1,35 @@
+version: '3'
+services:
+  postgresdb:
+    restart: unless-stopped
+    image: ghcr.io/skysensors/skygres:latest
+    environment:
+      - POSTGRES_PASSWORD=SecurePassword
+      - POSTGRES_DB=postgres
+    volumes:
+      - sky_postgres:/var/lib/postgresql/data
+    ports:
+      - "54320:5432"
+    networks:
+      - sky_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+  api:
+     image: ghcr.io/skysensors/skysensorsapi:latest
+     ports:
+       - "888:8080"
+     networks:
+      - sky_network
+  dashboard:
+     image: ghcr.io/skysensors/skyboard:latest
+     ports:
+       - "777:80"
+     networks:
+      - sky_network
+volumes:
+  sky_postgres:
+networks:
+  sky_network:
