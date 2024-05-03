@@ -31,9 +31,17 @@ git clone https://github.com/SkySensors/SkyStack
 2. Naviger til projektets mappe
 
 
-3. Kør Docker Compose:
+3. Tilføj en .env fil med følgende variabler
+    ```
+    DB_PASS=
+    DB_NAME=
+    DB_USERNAME=
+    ```
+
+
+4. Kør Docker Compose:
 ```
-docker-compose up
+docker-compose --env-file ./.env up
 ```
 
 Denne kommando vil bygge de nødvendige Docker-billeder og starte de containere, der er defineret i `docker-compose.yml`-filen. 
