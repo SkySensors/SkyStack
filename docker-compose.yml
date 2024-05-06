@@ -14,28 +14,31 @@ services:
     networks:
       - sky_network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -D postgres"]
       interval: 10s
       timeout: 3s
       retries: 3
 
   api:
-     image: ghcr.io/skysensors/skysensorsapi:latest
-     ports:
+    image: ghcr.io/skysensors/skysensorsapi:latest
+    ports:
        - "888:8080"
-     networks:
+    networks:
       - sky_network
-     environment:
+    environment:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASS=${DB_PASS}
       - DB_HOST=postgresdb
       - DB_PORT=5432
       - DB_NAME=postgres
+    depends_on:
+      postgresdb:
+        condition: service_healthy
   dashboard:
-     image: ghcr.io/skysensors/skyboard:latest
-     ports:
+    image: ghcr.io/skysensors/skyboard:latest
+    ports:
        - "777:80"
-     networks:
+    networks:
       - sky_network
 volumes:
   sky_postgres:
