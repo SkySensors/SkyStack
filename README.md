@@ -23,34 +23,33 @@ For at køre dette projekt skal du have Docker installeret på dit system. Følg
 Når Docker er installeret, følg disse trin for at køre Docker Compose-filen:
 
 1. Klon dette repository til din lokale maskine:
-
-```
-git clone https://github.com/SkySensors/SkyStack
-```
+    ```
+    git clone https://github.com/SkySensors/SkyStack
+    ```
 
 2. Naviger til projektets mappe
 
+3. Åben mappen i powershell
 
-3. Tilføj en .env fil med følgende variabler
+4. Tilføj en .env fil med følgende variabler og ændre parameterne med powershell
+    
+    Her skal password og postgres ændres
     ```
-    DB_PASS=
-    DB_NAME=
-    DB_USERNAME=
+    New-Item ".env" -ItemType File -Value ("DB_PASS=password" + [Environment]::NewLine + "DB_USERNAME=postgres")
     ```
 
-
-4. Kør Docker Compose:
-```
-docker-compose --env-file ./.env up
-```
+5. Kør Docker Compose:
+    ```
+    docker compose --env-file ./.env up
+    ```
 
 Denne kommando vil bygge de nødvendige Docker-billeder og starte de containere, der er defineret i `docker-compose.yml`-filen. 
-- Skyboard på `http://localhost:80`.
-- SkySensorsAPI `http://localhost:8080`
+- Skyboard på `http://localhost:777`.
+- SkySensorsAPI `http://localhost:888`
 
 ### Andre Docker Compose kommandoer
 - Det er muligt at ændre database password udfra "POSTGRES_PASSWORD"
 - For at stoppe Docker Compose, brug følgende kommando:
-```
-docker-compose down
-```
+    ```
+    docker compose down
+    ```
