@@ -5,7 +5,7 @@ services:
     image: ghcr.io/skysensors/skygres:latest
     environment:
       - POSTGRES_PASSWORD=${DB_PASS}
-      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=${DB_USERNAME}
     volumes:
       - sky_postgres:/var/lib/postgresql/data
@@ -30,7 +30,7 @@ services:
       - DB_PASS=${DB_PASS}
       - DB_HOST=postgresdb
       - DB_PORT=5432
-      - DB_NAME=${DB_NAME}
+      - DB_NAME=postgres
   dashboard:
      image: ghcr.io/skysensors/skyboard:latest
      ports:
