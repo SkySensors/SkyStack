@@ -33,7 +33,7 @@ Når Docker er installeret, følg disse trin for at køre Docker Compose-filen:
 
 4. Tilføj en .env fil med følgende variabler og ændre parameterne med powershell
     
-    Her skal password og postgres ændres
+    Her er det muligt at ændre password og postgres
     ```
     New-Item ".env" -ItemType File -Value ("DB_PASS=password" + [Environment]::NewLine + "DB_USERNAME=postgres")
     ```
@@ -48,7 +48,6 @@ Denne kommando vil bygge de nødvendige Docker-billeder og starte de containere,
 - SkySensorsAPI `http://localhost:888`
 
 ### Andre Docker Compose kommandoer
-- Det er muligt at ændre database password udfra "POSTGRES_PASSWORD"
 - For at stoppe Docker Compose, brug følgende kommando:
     ```
     docker compose down
