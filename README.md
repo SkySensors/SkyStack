@@ -48,7 +48,6 @@ Denne kommando vil bygge de nødvendige Docker-billeder og starte de containere,
 - SkySensorsAPI `http://localhost:888`
 
 ### Andre Docker Compose kommandoer
-- Det er muligt at ændre database password udfra "POSTGRES_PASSWORD"
 - For at stoppe Docker Compose, brug følgende kommando:
     ```
     docker compose down
