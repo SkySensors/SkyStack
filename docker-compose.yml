@@ -1,5 +1,23 @@
 version: '3'
 services:
+  skyscale_db:
+    restart: unless-stopped
+    image: ghcr.io/skysensors/skyscale:latest
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${DB_USERNAME}
+    volumes:
+      - skyscale_volume:/home/postgres/pgdata/data
+    ports:
+      - "54329:5432"
+    networks:
+      - sky_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d postgres"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
   postgresdb:
     restart: unless-stopped
     image: ghcr.io/skysensors/skygres:latest
@@ -42,5 +60,6 @@ services:
       - sky_network
 volumes:
   sky_postgres:
+  skyscale_volume:
 networks:
   sky_network:
